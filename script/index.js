@@ -53,6 +53,7 @@ window.addEventListener('load', () => {
     alarmButton.addEventListener('click', () => {
         const p = document.querySelector('.alarmStatus');
         p.innerHTML = 'The alarm is ON!';
+        p.classList.add('alarm');
        
         const options = {
             body: "It's time! Touch to stop alarm.",
@@ -66,6 +67,7 @@ window.addEventListener('load', () => {
 
         notif.addEventListener('click', event => {
             p.innerHTML = 'The alarm is OFF.'
+            p.classList.remove('alarm');
         });
         notif.addEventListener('close', event => {
             console.log('User closed notification without stopping the alarm.')

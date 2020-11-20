@@ -15,3 +15,33 @@ button {
     background-color: var(--secondary-color);
     color: var(--primary-color);
 }
+
+
+p.alarmStatus {
+    padding: 0.4em;
+    transition: background-color 2s linear;
+}
+
+.alarm {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    animation: alarm-blink 1.5s infinite;
+    /*transition:  #ff9090;*/
+}
+
+@keyframes alarm-blink {
+    from {
+        background-color: var(--secondary-color);
+        border-radius: 0px;
+    }
+
+    50% {
+        background-color: #ff9090;
+        border-radius: 8px;
+    }
+
+    to {
+        background-color: var(--secondary-color);
+        border-radius: 0px;
+    }
+}
