@@ -37,6 +37,8 @@ window.addEventListener('load', () => {
         }
 
         let notif = new Notification('Reminder', options);
+        navigator.serviceWorker.ready.then(reg => 
+            reg.showNotification('Reminder 2', options));
 
         notif.addEventListener('show', () => {
             console.log('Showing notification');
@@ -45,5 +47,28 @@ window.addEventListener('load', () => {
         notif.addEventListener('click', () => {
             console.log('User clickad on notification');
         })
+    })
+
+    const alarmButton = document.getElementById('alarmButton');
+    alarmButton.addEventListener('click', () => {
+        const p = document.querySelector('.alarmStatus');
+        p.innerHTML = 'The alarm is ON!';
+       
+        const options = {
+            body: "It's time! Touch to stop alarm.",
+            icon: '../img/alarm-clock.png'
+        }
+
+        let notif = new Notification('Alarm', options);
+        notif.addEventListener('show', event => {
+            console.log('Notification should be showing now');
+        });
+
+        notif.addEventListener('click', event => {
+            p.innerHTML = 'The alarm is OFF.'
+        });
+        notif.addEventListener('close', event => {
+            console.log('User closed notification without stopping the alarm.')
+        });
     })
 })
